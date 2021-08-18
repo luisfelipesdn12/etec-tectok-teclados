@@ -9,5 +9,8 @@
             "src": "/",
             "dest": "/api/index.php"
         }
+    ],
+    "builds": [
+        { "src": "/public/**", "use": "@vercel/static" }
     ]
 }
