@@ -23,31 +23,32 @@ https://user-images.githubusercontent.com/60361387/129431380-e39f203d-44d0-477f-
 
 https://user-images.githubusercontent.com/60361387/129431386-16de5c70-377f-411c-9d72-07bfb0367e4d.mp4
 
-## Running
+## Rodando
 
-How to run the projects locally.
+Como rodar o projeto localmente.
 
-### Using PHP Development Server
+### Usando o Servidor de Desenvolvimento do PHP
 
-For my personal use, I think that the `php` CLI is the best way to start a local server.
+Para o meu uso pessoal, eu acho que a CLI `php` é a melhor maneira de inicial um servidor local.
 
-1. Clone this repository
-2. In the repository root directory, run:
+1. Clone este repositório
+2. No diretório raiz do repositório, rode:
 
 ```sh
 php -S localhost:4002
 ```
 
-> You can chose any other port
+> Você pode escolher qualquer outra porta
 
-3. Go to `http://localhost:4002`
+3. Vá para `http://localhost:4002`
 
-### Using XAMPP
+### Usando o XAMPP
 
-In the classes at ETEC, we learn using [XAMPP](https://www.apachefriends.org) to run the local server.
+Nas aulas da ETEC, nós aprendemos usando o [XAMPP](https://www.apachefriends.org) para rodar o servidor local.
 
-Since I'm not using databases yet, it is not so necessary, but you can use it:
+Como eu não estou usando banco de dados ainda, não é tão necessário, mas você pode usá-lo:
 
-1. Clone this repository under `<xampp_dir>/htdocs/`
-2. Start the Apache Server using XAMPP
-3. Go to `http://localhost/etec-tectok-teclados`
+- Clone este repositório em `<diretorio_do_xampp>/htdocs/`
+- Inicie o servidor Apache usando o XAMPP
+- Vá para `http://localhost/etec-tectok-teclados`
+- 
