@@ -48,7 +48,6 @@ Nas aulas da ETEC, nós aprendemos usando o [XAMPP](https://www.apachefriends.or
 
 Como eu não estou usando banco de dados ainda, não é tão necessário, mas você pode usá-lo:
 
-- Clone este repositório em `<diretorio_do_xampp>/htdocs/`
-- Inicie o servidor Apache usando o XAMPP
-- Vá para `http://localhost/etec-tectok-teclados`
-- 
+1. Clone este repositório em `<diretorio_do_xampp>/htdocs/`
+2. Inicie o servidor Apache usando o XAMPP
+3. Vá para `http://localhost/etec-tectok-teclados`
