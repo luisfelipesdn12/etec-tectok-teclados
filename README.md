@@ -46,7 +46,7 @@ php -S localhost:4002
 
 Nas aulas da ETEC, nós aprendemos usando o [XAMPP](https://www.apachefriends.org) para rodar o servidor local.
 
-Como eu não estou usando banco de dados ainda, não é tão necessário, mas você pode usá-lo:
+Para usar com ele:
 
 1. Clone este repositório em `<diretorio_do_xampp>/htdocs/`
 2. Inicie o servidor Apache usando o XAMPP
