@@ -1,0 +1,6 @@
+{
+    "languageToolLinter.enabled": true,
+    "languageToolLinter.languageTool.motherTongue": "pt-BR",
+    "languageToolLinter.languageTool.language": "pt-BR",
+    "languageToolLinter.languageTool.disabledRules": "DASH_RULE,HIPHEN_SPACE_RULES"
+}
