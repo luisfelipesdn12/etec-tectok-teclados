@@ -21,8 +21,24 @@ header p {
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
+hr {
+    background-color: var(--white) !important;
+    height: 2px !important;
+    border-radius: 5rem;
+    opacity: 0.1 !important;
+}
+
 .row {
     justify-content: space-around;
+}
+
+.badge.badge-category {
+    background-color: var(--blue);
+    color: var(--black);
+}
+
+.material-icons-outlined {
+    color: var(--blue) !important;
 }
 
 @media (min-width: 576px) {

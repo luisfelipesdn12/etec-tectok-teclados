@@ -9,7 +9,6 @@ function get_database_connection()
     $password = getenv("DB_PASSWORD");
 
     if ($user == false or $password == false) {
-        echo "The environment variables `DB_USER` and `DB_PASSWORD` are required.";
         throw new Exception("The environment variables `DB_USER` and `DB_PASSWORD` are required.");
     }
 
@@ -19,7 +18,7 @@ function get_database_connection()
 function get_products()
 {
     $connection = get_database_connection();
-    $products = $connection->query('select * from product_with_category')->fetchAll();
+    $products = $connection->query("select * from product_with_category")->fetchAll();
 
     return $products;
 }
