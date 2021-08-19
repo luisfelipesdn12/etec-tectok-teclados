@@ -17,11 +17,11 @@ Translations: [:brazil: Português (BR)](README.md)
 
 ### Desktop
 
-https://user-images.githubusercontent.com/60361387/129431380-e39f203d-44d0-477f-aa0b-16b9f95e9f9e.mp4
+![](https://user-images.githubusercontent.com/60361387/130000903-05598537-af87-4751-9b6a-d7f2dfd51cb6.png)
 
 ### Mobile
 
-https://user-images.githubusercontent.com/60361387/129431386-16de5c70-377f-411c-9d72-07bfb0367e4d.mp4
+<img src="https://user-images.githubusercontent.com/60361387/130000916-9931bfb0-136d-4f42-b8e2-90d073b29ab7.png" height="1000rem" />
 
 ## Running
 
