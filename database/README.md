@@ -12,4 +12,4 @@ Para criar o banco de dados e as tabelas, execute o arquivo `setup.sql`, isso ir
 
 ## Populando
 
-Usa vez que o banco está cirado, pode-se inserir os dados como quiser. Mas é recomendado executar o arquivo `base_data.sql` que criará categorias e produtos básicos.
+Usa vez que o banco está criado, pode-se inserir os dados como quiser. Mas é recomendado executar o arquivo `base_data.sql` que criará categorias e produtos básicos.
