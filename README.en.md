@@ -21,7 +21,7 @@ Translations: [:brazil: Português (BR)](README.md)
 
 ### Mobile
 
-<img src="https://user-images.githubusercontent.com/60361387/130000916-9931bfb0-136d-4f42-b8e2-90d073b29ab7.png" height="1000rem" />
+<img src="https://user-images.githubusercontent.com/60361387/130000916-9931bfb0-136d-4f42-b8e2-90d073b29ab7.png" height="500rem" />
 
 ## Running
 

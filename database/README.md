@@ -1,5 +1,9 @@
 # Banco de dados
 
+Translations: [:us: English](README.en.md)
+
+---
+
 Estamos usando o MySQL como banco de dados.
 
 ## Configurando
