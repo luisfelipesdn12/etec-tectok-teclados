@@ -13,8 +13,8 @@
     <div class="container-fluid">
         <a class="navbar-brand" href=".">
             <picture>
-                <source srcset="public/assets/tectok-only-text-white.svg" media="(max-width: 600px)">
-                <img id="nav-text-logo" src="public/assets/tectok-text-white.svg" alt="TecTok Teclados" title="TecTok Teclados">
+                <source srcset="/public/assets/tectok-only-text-white.svg" media="(max-width: 600px)">
+                <img id="nav-text-logo" src="/public/assets/tectok-text-white.svg" alt="TecTok Teclados" title="TecTok Teclados">
             </picture>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,7 +47,7 @@
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <?php foreach ($categories as $category) { ?>
                                     <li>
-                                        <a class="dropdown-item" href="<?php echo '?category_id=' . $category['id'] ?>">
+                                        <a class="dropdown-item" href="<?php echo strtok($_SERVER['REQUEST_URI'], '?') . '/category.php?id=' . $category['id'] ?>">
                                             <?php echo $category['name'] ?>
                                         </a>
                                     </li>
