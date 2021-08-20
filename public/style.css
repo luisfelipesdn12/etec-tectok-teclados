@@ -41,6 +41,15 @@ hr {
     color: var(--blue) !important;
 }
 
+.product-image-container {
+    width:100%;
+    padding-bottom:100%;
+    border-radius: 0.25rem;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 @media (min-width: 576px) {
     .col-sm-3 {
         width: 24% !important;
