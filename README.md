@@ -17,11 +17,11 @@ Translations: [:us: English](README.en.md)
 
 ### Desktop
 
-![](https://user-images.githubusercontent.com/60361387/130000903-05598537-af87-4751-9b6a-d7f2dfd51cb6.png)
+![](demo/desktop.png)
 
 ### Mobile
 
-<img src="https://user-images.githubusercontent.com/60361387/130000916-9931bfb0-136d-4f42-b8e2-90d073b29ab7.png" height="500rem" />
+<img src="demo/mobile.png" height="500rem" />
 
 ## Rodando
 
