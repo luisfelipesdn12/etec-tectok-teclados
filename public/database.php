@@ -12,7 +12,7 @@ function get_database_connection()
         throw new Exception("The environment variables `DB_USER` and `DB_PASSWORD` are required.");
     }
 
-    return new PDO("$engine:host=$host;dbname=$name", $user, $password);
+    return new PDO("$engine:host=$host;dbname=$name;charset=utf8", $user, $password);
 }
 
 function get_products()
