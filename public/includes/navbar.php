@@ -47,7 +47,7 @@
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <?php foreach ($categories as $category) { ?>
                                     <li>
-                                        <a class="dropdown-item" href="<?php echo strtok($_SERVER['REQUEST_URI'], '?') . '/category.php?id=' . $category['id'] ?>">
+                                        <a class="dropdown-item" href="<?php echo '?category_id=' . $category['id'] ?>">
                                             <?php echo $category['name'] ?>
                                         </a>
                                     </li>
