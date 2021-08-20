@@ -38,23 +38,25 @@
 
                 try {
                     $categories = get_categories();
-                ?>
-                    <li class="nav-item dropdown" style="margin-right: 1rem;">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Categorias
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <?php foreach ($categories as $category) { ?>
-                                <li>
-                                    <a class="dropdown-item" href="<?php echo '?category_id=' . $category['id'] ?>">
-                                        <?php echo $category['name'] ?>
-                                    </a>
-                                </li>
-                            <?php } ?>
-                        </ul>
-                    </li>
-                <?php
-                } catch (Exception $e) {} ?>
+
+                    if (isset($categories) && !empty($categories)) { ?>
+                        <li class="nav-item dropdown" style="margin-right: 1rem;">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Categorias
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <?php foreach ($categories as $category) { ?>
+                                    <li>
+                                        <a class="dropdown-item" href="<?php echo '?category_id=' . $category['id'] ?>">
+                                            <?php echo $category['name'] ?>
+                                        </a>
+                                    </li>
+                                <?php } ?>
+                            </ul>
+                        </li>
+                <?php }
+                } catch (Exception $e) {
+                } ?>
                 <form class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="Faça uma pesquisa..." aria-label="Faça uma pesquisa...">
                     <button class="material-icons-outlined btn btn-dark" type="submit">
