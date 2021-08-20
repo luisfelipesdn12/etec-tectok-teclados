@@ -6,7 +6,7 @@ try {
     $category = get_category_by_id($category_id);
     $products = get_products_from_category_id($category_id);
 
-    if ($category) { ?>
+    if (isset($category)) { ?>
         <section class="p-5">
             <h1 class="mb-4">
                 <?php echo $category['name'] ?>
