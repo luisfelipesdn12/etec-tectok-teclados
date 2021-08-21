@@ -67,7 +67,7 @@
             <a href="https://github.com/luisfelipesdn12/etec-tectok-teclados" target="_blank" rel="noopener noreferrer" class="btn btn-dark" title="Código Fonte">
                 <img src="https://img.icons8.com/material-outlined/250/69C9D0/github" alt="Github" style="height: 24px;">
             </a>
-            <button class="material-icons-outlined btn btn-dark" title="Entrar">
+            <button class="material-icons-outlined btn btn-dark" title="Entrar" onclick="location.href='/login.php'">
                 login
             </button>
         </div>
