@@ -11,7 +11,6 @@
 <body class="bg-dark" style="--bs-bg-opacity: .95;">
   <?php include 'includes/navbar.php'; ?>
   <?php include 'includes/header.html'; ?>
-  <?php include 'includes/category.php'; ?>
   <?php include 'includes/products.php'; ?>
   <?php include 'includes/footer.html'; ?>
 </body>
