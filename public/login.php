@@ -26,6 +26,15 @@
         max-width: 100%;
     }
 
+    a {
+        color: var(--pink) !important;
+        text-decoration: none !important;
+    }
+
+    a:hover {
+        text-decoration: underline !important;
+    }
+
     button.btn {
         background: var(--pink);
         color: var(--white);
