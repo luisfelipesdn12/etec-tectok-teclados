@@ -35,7 +35,7 @@ For my personal use, I think that the `php` CLI is the best way to start a local
 2. In the repository root directory, run:
 
 ```sh
-php -S localhost:4002
+php -S localhost:4002 -t src
 ```
 
 > You can chose any other port
