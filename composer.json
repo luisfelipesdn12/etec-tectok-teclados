@@ -1,4 +1,18 @@
 {
+    "name": "luis/etec-tectok-teclados",
+    "description": "Uma loja virtual de teclados feita nas aulas de PW-II na ETEC com PHP e bootstrap",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Luis Felipe",
+            "email": "luisfelipesdn12@gmail.com",
+            "homepage": "https://luisfelipesdn12.now.sh"
+        }
+    ],
+    "scripts": {
+        "start": "php -S localhost:4002 -t src"
+    },
     "require": {
         "vlucas/phpdotenv": "^5.3"
     }

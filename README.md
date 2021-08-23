@@ -36,6 +36,9 @@ Para o meu uso pessoal, eu acho que a CLI `php` é a melhor maneira de inicial u
 
 ```sh
 php -S localhost:4002 -t src
+
+# ou usando o composer:
+composer start
 ```
 
 > Você pode escolher qualquer outra porta

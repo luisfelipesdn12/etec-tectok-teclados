@@ -36,6 +36,9 @@ For my personal use, I think that the `php` CLI is the best way to start a local
 
 ```sh
 php -S localhost:4002 -t src
+
+# or using composer:
+composer start
 ```
 
 > You can chose any other port
