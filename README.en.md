@@ -5,12 +5,12 @@ Translations: [:brazil: Português (BR)](README.md)
 
 ---
 
-<a href="https://etec-tectok-teclados.vercel.app" target="_blank" rel="noopener noreferrer">
-    <img src="https://etec-tectok-teclados.vercel.app/public/assets/tectok-banner.svg" width="100%" />
+<a href="https://tectok.herokuapp.com" target="_blank" rel="noopener noreferrer">
+    <img src="https://tectok.herokuapp.com/assets/tectok-banner.svg" width="100%" />
 </a>
 
 <p align="center">
-    <strong><a href="https://etec-tectok-teclados.vercel.app" target="_blank" rel="noopener noreferrer">etec-tectok-teclados.vercel.app</a></strong>
+    <strong><a href="https://tectok.herokuapp.com" target="_blank" rel="noopener noreferrer">tectok.herokuapp.com</a></strong>
 </p>
 
 ## Demo
