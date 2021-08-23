@@ -48,7 +48,7 @@
 <body class="bg-dark" style="--bs-bg-opacity: .95;">
     <main class="form-signin text-center">
         <form class="bg-dark">
-            <img class="mb-4" src="/public/assets/tectok-text-white.svg" alt="TecTok Teclados">
+            <img class="mb-4" src="/assets/tectok-text-white.svg" alt="TecTok Teclados">
             <div class="form-floating my-2">
                 <input required type="email" class="form-control" id="floatingInput" placeholder="nome@tectok.com">
                 <label for="floatingInput">E-mail</label>
