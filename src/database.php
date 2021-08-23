@@ -1,12 +1,16 @@
 <?php
 
+require __DIR__ . '/../vendor/autoload.php';
+
+Dotenv\Dotenv::createImmutable(__DIR__ . '/..')->safeLoad();
+
 function get_database_connection()
 {
-    $engine = getenv("DB_ENGINE") ?: "mysql";
-    $host = getenv("DB_HOST") ?: "localhost";
-    $name = getenv("DB_NAME") ?: "etec_tectok_teclados";
-    $user = getenv("DB_USER");
-    $password = getenv("DB_PASSWORD");
+    $engine = $_ENV["DB_ENGINE"] ?: "mysql";
+    $host = $_ENV["DB_HOST"] ?: "localhost";
+    $name = $_ENV["DB_NAME"] ?: "etec_tectok_teclados";
+    $user = $_ENV["DB_USER"];
+    $password = $_ENV["DB_PASSWORD"];
 
     if ($user == false or $password == false) {
         throw new Exception("The environment variables `DB_USER` and `DB_PASSWORD` are required.");
