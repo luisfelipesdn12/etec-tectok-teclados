@@ -29,7 +29,7 @@ Como rodar o projeto localmente.
 
 ### Usando o Servidor de Desenvolvimento do PHP
 
-Para o meu uso pessoal, eu acho que a CLI `php` é a melhor maneira de inicial um servidor local.
+Para o meu uso pessoal, eu acho que a CLI [`php`](https://www.php.net/downloads.php) é a melhor maneira de inicial um servidor local.
 
 1. Clone este repositório
 2. No diretório raiz do repositório, rode:
@@ -44,13 +44,3 @@ composer start
 > Você pode escolher qualquer outra porta
 
 3. Vá para `http://localhost:4002`
-
-### Usando o XAMPP
-
-Nas aulas da ETEC, nós aprendemos usando o [XAMPP](https://www.apachefriends.org) para rodar o servidor local.
-
-Para usar com ele:
-
-1. Clone este repositório em `<diretorio_do_xampp>/htdocs/`
-2. Inicie o servidor Apache usando o XAMPP
-3. Vá para `http://localhost/etec-tectok-teclados`

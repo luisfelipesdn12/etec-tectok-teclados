@@ -29,7 +29,7 @@ How to run the project locally.
 
 ### Using PHP Development Server
 
-For my personal use, I think that the `php` CLI is the best way to start a local server.
+For my personal use, I think that the [`php`](https://www.php.net/downloads.php) CLI is the best way to start a local server.
 
 1. Clone this repository
 2. In the repository root directory, run:
@@ -44,13 +44,3 @@ composer start
 > You can chose any other port
 
 3. Go to `http://localhost:4002`
-
-### Using XAMPP
-
-In the classes at ETEC, we learn using [XAMPP](https://www.apachefriends.org) to run the local server.
-
-To use with it:
-
-1. Clone this repository under `<xampp_dir>/htdocs/`
-2. Start the Apache Server using XAMPP
-3. Go to `http://localhost/etec-tectok-teclados`
