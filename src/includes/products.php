@@ -11,9 +11,7 @@
             if (empty($products)) {
                 render_error("Não há nenhum produto.");
             } else {
-                foreach ($products as $product) {
-                    render_product($product);
-                }
+                render_products($products);
             }
         } catch (Exception $e) {
             render_error("Ocorreu um erro ao se conectar com o banco de dados.", $e);

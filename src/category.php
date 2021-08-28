@@ -23,17 +23,14 @@
                     <h1 class="mb-4">
                         <?php echo $category['name'] ?>
                     </h1>
-                    <div class="row" style="row-gap: 20px;">
-                        <?php
+                    <div class="row" style="row-gap: 20px;"><?php
                         if (empty($products)) {
-                            render_error('Não há nenhum produto na categoria "' . $category['name'] . '".');
+                            $category_name = $category['name'];
+                            render_error("Não há nenhum produto na categoria $category_name.");
                         } else {
-                            foreach ($products as $product) {
-                                render_product($product);
-                            }
+                            render_products($products);
                         }
-                        ?>
-                    </div>
+                    ?></div>
                 </section>
     <?php }
         } catch (Exception $e) {

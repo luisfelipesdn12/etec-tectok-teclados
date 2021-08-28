@@ -26,6 +26,13 @@ function get_products()
     return $products;
 }
 
+function get_only_new_products()
+{
+    $connection = get_database_connection();
+    $products = $connection->query("select * from product_with_category where is_new = true")->fetchAll();
+    return $products;
+}
+
 function get_products_from_category_id($category_id)
 {
     $connection = get_database_connection();

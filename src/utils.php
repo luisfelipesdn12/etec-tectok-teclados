@@ -53,3 +53,9 @@ function render_product($product)
         </div>
     </div>
 <?php }
+
+function render_products($products) {
+    foreach ($products as $product) {
+        render_product($product);
+    }
+}

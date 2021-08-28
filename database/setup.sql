@@ -17,5 +17,6 @@ create table product (
     quantity_available int not null default 0,
     image_url varchar(500),
     category_id int not null,
+    is_new boolean not null default false,
     constraint fk_category_id foreign key(category_id) references category(id)
 ) default charset utf8;
