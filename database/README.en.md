@@ -37,3 +37,13 @@ Execute the following files:
 1. `setup.sql` - Creates the database and the tables.
 2. `base_data.sql` - Initially populates the database (optional).
 3. `product_with_category_view.sql` - Creates a view of the products with their categories.
+
+## Troubleshooting
+
+1. PDOException “could not find driver”
+
+    At the first running (on Linux), I had this error. With a quick search I've found [a StackOverflow page]() with some solution options. The one which solves it for me was install the mysql driver with:
+    
+    ```sh
+    sudo apt-get install php7.0-mysql
+    ```
