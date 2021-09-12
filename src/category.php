@@ -16,7 +16,7 @@
         $category_id = $_GET['id'];
         try {
             $category = get_category_by_id($category_id);
-            $products = get_products_from_category_id($category_id);
+            $products = get_products_from_category_id($category_id, "image_url, name, description, price, quantity_available");
 
             if (isset($category)) { ?>
                 <section class="p-5">
