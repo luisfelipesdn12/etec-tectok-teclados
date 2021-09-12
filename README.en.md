@@ -13,6 +13,15 @@ Translations: [:brazil: Português (BR)](README.md)
     <strong><a href="https://tectok.herokuapp.com" target="_blank" rel="noopener noreferrer">tectok.herokuapp.com</a></strong>
 </p>
 
+## Features
+
+- 📂 Database connection using MySQL
+- 🛑 Careful errors handling
+- 💥 "New products" section
+- 🔖 Section for each category
+- 🆔 User log-in
+- 🌐 Deploy to the web and Git-based updates
+
 ## Demo
 
 ### Desktop

@@ -13,6 +13,15 @@ Translations: [:us: English](README.en.md)
     <strong><a href="https://tectok.herokuapp.com" target="_blank" rel="noopener noreferrer">tectok.herokuapp.com</a></strong>
 </p>
 
+## Funcionalidades
+
+- 📂 Conexão com banco de dados MySQL
+- 🛑 Cuidadoso tratamento de erros
+- 💥 Seção de "novidades"
+- 🔖 Seção para cada categoria
+- 🆔 Log-in de usuário
+- 🌐 Implantação do site na web e atualizações baseadas em Git
+
 ## Demo
 
 ### Desktop
