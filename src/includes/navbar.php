@@ -31,7 +31,7 @@
                 <?php
 
                 try {
-                    $categories = get_categories();
+                    $categories = $db->get_categories();
 
                     if (isset($categories) && !empty($categories)) { ?>
                         <li class="nav-item dropdown" style="margin-right: 1rem;">

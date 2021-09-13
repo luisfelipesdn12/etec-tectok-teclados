@@ -18,7 +18,7 @@
         <div class="row" style="row-gap: 20px;">
             <?php
             try {
-                $products = get_only_new_products();
+                $products = $db->get_only_new_products();
 
                 if (empty($products)) {
                     render_error("Não há nenhum produto.");

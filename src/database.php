@@ -4,55 +4,53 @@ require __DIR__ . '/../vendor/autoload.php';
 
 Dotenv\Dotenv::createImmutable(__DIR__ . '/..')->safeLoad();
 
-function get_database_connection()
+class DatabaseConnection
 {
-    $engine = $_ENV["DB_ENGINE"] ?: "mysql";
-    $host = $_ENV["DB_HOST"] ?: "localhost";
-    $name = $_ENV["DB_NAME"] ?: "etec_tectok_teclados";
-    $user = $_ENV["DB_USER"];
-    $password = $_ENV["DB_PASSWORD"];
+    protected PDO $connection;
 
-    if ($user == false or $password == false) {
-        throw new Exception("The environment variables `DB_USER` and `DB_PASSWORD` are required.");
+    function __construct() {
+        $engine = $_ENV["DB_ENGINE"] ?: "mysql";
+        $host = $_ENV["DB_HOST"] ?: "localhost";
+        $name = $_ENV["DB_NAME"] ?: "etec_tectok_teclados";
+        $user = $_ENV["DB_USER"];
+        $password = $_ENV["DB_PASSWORD"];
+
+        if ($user == false or $password == false) {
+            throw new Exception("The environment variables `DB_USER` and `DB_PASSWORD` are required.");
+        }
+
+        $this->connection = new PDO("$engine:host=$host;dbname=$name;charset=utf8", $user, $password);
     }
 
-    return new PDO("$engine:host=$host;dbname=$name;charset=utf8", $user, $password);
+    function get_products($fields = "*")
+    {
+        $products = $this->connection->query("select $fields from product_with_category")->fetchAll();
+        return $products;
+    }
+    
+    function get_only_new_products($fields = "*")
+    {
+        $products = $this->connection->query("select $fields from product_with_category where is_new = true")->fetchAll();
+        return $products;
+    }
+    
+    function get_products_from_category_id($category_id, $fields = "*")
+    {
+        $products = $this->connection->query("select $fields from product_with_category where category_id=$category_id")->fetchAll();
+        return $products;
+    }
+    
+    function get_categories($fields = "*")
+    {
+        $categories = $this->connection->query("select $fields from category")->fetchAll();
+        return $categories;
+    }
+    
+    function get_category_by_id($id, $fields = "*")
+    {
+        $category = $this->connection->query("select $fields from category where id = $id")->fetch();
+        return $category;
+    }
 }
 
-function get_products($fields = "*")
-{
-    $connection = get_database_connection();
-    $products = $connection->query("select $fields from product_with_category")->fetchAll();
-    return $products;
-}
-
-function get_only_new_products($fields = "*")
-{
-    $connection = get_database_connection();
-    $products = $connection->query("select $fields from product_with_category where is_new = true")->fetchAll();
-    return $products;
-}
-
-function get_products_from_category_id($category_id, $fields = "*")
-{
-    $connection = get_database_connection();
-
-    $products = $connection->query("select $fields from product_with_category where category_id=$category_id")->fetchAll();
-    return $products;
-}
-
-function get_categories($fields = "*")
-{
-    $connection = get_database_connection();
-    $categories = $connection->query("select $fields from category")->fetchAll();
-
-    return $categories;
-}
-
-function get_category_by_id($id, $fields = "*")
-{
-    $connection = get_database_connection();
-    $category = $connection->query("select $fields from category where id = $id")->fetch();
-
-    return $category;
-}
+$db = new DatabaseConnection();
