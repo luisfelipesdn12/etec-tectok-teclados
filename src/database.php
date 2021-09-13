@@ -27,25 +27,27 @@ class DatabaseConnection
         $products = $this->connection->query("select $fields from product_with_category")->fetchAll();
         return $products;
     }
-    
+
     function get_only_new_products($fields = "*")
     {
         $products = $this->connection->query("select $fields from product_with_category where is_new = true")->fetchAll();
         return $products;
     }
-    
+
     function get_products_from_category_id($category_id, $fields = "*")
     {
-        $products = $this->connection->query("select $fields from product_with_category where category_id=$category_id")->fetchAll();
-        return $products;
+        $query = $this->connection->prepare("select $fields from product_with_category where category_id=:category_id");
+        $query->bindParam(":category_id", $category_id);
+        $query->execute();
+        return $query->fetchAll();
     }
-    
+
     function get_categories($fields = "*")
     {
         $categories = $this->connection->query("select $fields from category")->fetchAll();
         return $categories;
     }
-    
+
     function get_category_by_id($id, $fields = "*")
     {
         $category = $this->connection->query("select $fields from category where id = $id")->fetch();
