@@ -8,7 +8,8 @@ class DatabaseConnection
 {
     protected PDO $connection;
 
-    function __construct() {
+    function __construct()
+    {
         $engine = $_ENV["DB_ENGINE"] ?: "mysql";
         $host = $_ENV["DB_HOST"] ?: "localhost";
         $name = $_ENV["DB_NAME"] ?: "etec_tectok_teclados";

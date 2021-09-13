@@ -39,7 +39,7 @@
         background: var(--pink);
         color: var(--white);
     }
-    
+
     button.btn:hover {
         color: var(--white);
     }

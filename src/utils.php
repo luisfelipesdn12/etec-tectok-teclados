@@ -7,7 +7,7 @@ function render_error($message, Exception $e = null)
             console.error(<?php echo json_encode($e->getMessage()) ?>)
         </script>
     <?php }
-    
+
     if ($message) { ?>
         <p class="text-secondary fs-5 m-0">
             <?php echo $message ?>
@@ -54,7 +54,8 @@ function render_product($product)
     </div>
 <?php }
 
-function render_products($products) {
+function render_products($products)
+{
     foreach ($products as $product) {
         render_product($product);
     }
