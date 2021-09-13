@@ -77,6 +77,19 @@ class DatabaseConnection
         $user = $query->fetch();
         return $user;
     }
+
+    function get_user_by_id($id, $fields = "*")
+    {
+        $query = $this->connection->prepare("select $fields from user where id = :id");
+        $query->bindParam(":id", $id);
+        $query->execute();
+        $user = $query->fetch();
+        return $user;
+    }
 }
 
-$db = new DatabaseConnection();
+try {
+    $db = new DatabaseConnection();
+} catch (\Throwable $th) {
+    header("Location: /database_connection_error.php");
+}

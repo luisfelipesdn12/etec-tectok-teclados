@@ -9,6 +9,17 @@
         }
     }
 </style>
+
+<?php
+
+$is_logged_in = !empty($_SESSION['id']);
+
+if ($is_logged_in) {
+    $user = $db->get_user_by_id($_SESSION['id']);
+}
+
+?>
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href=".">
@@ -58,12 +69,19 @@
                     </button>
                 </form>
             </ul>
-            <a href="https://github.com/luisfelipesdn12/etec-tectok-teclados" target="_blank" rel="noopener noreferrer" class="btn btn-dark" title="Código Fonte">
-                <img src="https://img.icons8.com/material-outlined/250/69C9D0/github" alt="Github" style="height: 24px;">
-            </a>
-            <button class="material-icons-outlined btn btn-dark" title="Entrar" onclick="location.href='/login.php'">
-                login
-            </button>
+            <div class="d-flex justify-content-between align-items-center">
+                <a href="https://github.com/luisfelipesdn12/etec-tectok-teclados" target="_blank" rel="noopener noreferrer" class="btn btn-dark" title="Código Fonte">
+                    <img src="https://img.icons8.com/material-outlined/250/69C9D0/github" alt="Github" style="height: 24px;">
+                </a>
+                <?php if ($is_logged_in) {?>
+                    <p class="m-0 mx-2">
+                        <?php echo $user['name']; ?>
+                    </p>
+                <?php } ?>
+                <button class="material-icons-outlined btn btn-dark" title="<?php echo $is_logged_in ? "Sair da conta" : "Entrar na conta"; ?>" onclick="location.href='<?php echo $is_logged_in ? "logout.php" : "login.php"; ?>'">
+                    <?php echo $is_logged_in ? "logout" : "login"; ?>
+                </button>
+            </div>
         </div>
     </div>
 </nav>
