@@ -44,7 +44,8 @@ class DatabaseConnection
         $query = $this->connection->prepare("select $fields from product_with_category where category_id=:category_id");
         $query->bindParam(":category_id", $category_id);
         $query->execute();
-        return $query->fetchAll();
+        $products = $query->fetchAll();
+        return $products;
     }
 
     function get_categories($fields = "*")
@@ -55,7 +56,10 @@ class DatabaseConnection
 
     function get_category_by_id($id, $fields = "*")
     {
-        $category = $this->connection->query("select $fields from category where id = $id")->fetch();
+        $query = $this->connection->prepare("select $fields from category where id = :id");
+        $query->bindParam(":id", $id);
+        $query->execute();
+        $category = $query->fetch();
         return $category;
     }
 }
