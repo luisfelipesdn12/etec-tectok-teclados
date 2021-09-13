@@ -47,14 +47,14 @@
 
 <body class="bg-dark" style="--bs-bg-opacity: .95;">
     <main class="form-signin text-center">
-        <form class="bg-dark">
+        <form class="bg-dark" method="POST" action="user_validation.php">
             <img class="mb-4" src="/assets/tectok-text-white.svg" alt="TecTok Teclados">
             <div class="form-floating my-2">
-                <input required type="email" class="form-control" id="floatingInput" placeholder="nome@tectok.com">
+                <input name="user_email" required type="email" class="form-control" id="floatingInput" placeholder="nome@tectok.com">
                 <label for="floatingInput">E-mail</label>
             </div>
             <div class="form-floating my-2">
-                <input required type="password" class="form-control" id="floatingPassword" placeholder="Senha">
+                <input name="user_password" required type="password" class="form-control" id="floatingPassword" placeholder="Senha">
                 <label for="floatingPassword">Senha</label>
             </div>
             <button class="my-3 w-100 btn btn-lg fw-bolder" type="submit">Entrar</button>

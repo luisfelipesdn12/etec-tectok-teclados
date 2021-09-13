@@ -62,6 +62,21 @@ class DatabaseConnection
         $category = $query->fetch();
         return $category;
     }
+
+    function get_users($fields = "*")
+    {
+        $users = $this->connection->query("select $fields from user")->fetchAll();
+        return $users;
+    }
+
+    function get_user_by_email($email, $fields = "*")
+    {
+        $query = $this->connection->prepare("select $fields from user where email = :email");
+        $query->bindParam(":email", $email);
+        $query->execute();
+        $user = $query->fetch();
+        return $user;
+    }
 }
 
 $db = new DatabaseConnection();
