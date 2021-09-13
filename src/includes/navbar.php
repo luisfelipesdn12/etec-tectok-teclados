@@ -12,11 +12,7 @@
 
 <?php
 
-$is_logged_in = !empty($_SESSION['id']);
-
-if ($is_logged_in) {
-    $user = $db->get_user_by_id($_SESSION['id']);
-}
+$is_logged_in = !empty($_SESSION['user']);
 
 ?>
 
@@ -70,14 +66,22 @@ if ($is_logged_in) {
                 </form>
             </ul>
             <div class="d-flex justify-content-between align-items-center">
+                <?php if ($is_logged_in) {?>
+                    <a
+                        href="<?php echo $_SESSION['user']['type'] == 'admin' ? '/admin.php' : '#' ?>"
+                        class="d-flex justify-content-between align-items-center m-0 badge text-dark"
+                        style="font-size: 0.9rem; height: 100%; background-color: var(--blue); text-decoration: none;"
+                    >
+                        <span class="material-icons-outlined text-dark" style="margin-right: 0.5rem; font-size: 1.25rem;">
+                            account_circle
+                        </span>
+                        <?php echo $_SESSION['user']['name']; ?>
+                        <?php echo $_SESSION['user']['type'] == 'admin' ? ' (Admin)' : '' ?>
+                    </a>
+                <?php } ?>
                 <a href="https://github.com/luisfelipesdn12/etec-tectok-teclados" target="_blank" rel="noopener noreferrer" class="btn btn-dark" title="Código Fonte">
                     <img src="https://img.icons8.com/material-outlined/250/69C9D0/github" alt="Github" style="height: 24px;">
                 </a>
-                <?php if ($is_logged_in) {?>
-                    <p class="m-0 mx-2">
-                        <?php echo $user['name']; ?>
-                    </p>
-                <?php } ?>
                 <button class="material-icons-outlined btn btn-dark" title="<?php echo $is_logged_in ? "Sair da conta" : "Entrar na conta"; ?>" onclick="location.href='<?php echo $is_logged_in ? "logout.php" : "login.php"; ?>'">
                     <?php echo $is_logged_in ? "logout" : "login"; ?>
                 </button>

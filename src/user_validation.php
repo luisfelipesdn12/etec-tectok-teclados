@@ -11,7 +11,7 @@ if ($user) {
     // Check password
     if ($user['password'] == $user_password) {
         session_start();
-        $_SESSION['id'] = $user['id'];
+        $_SESSION['user'] = $user;
         header("Location: /" );
     } else {
         header("Location: /login.php?wrong_password_error=1");
