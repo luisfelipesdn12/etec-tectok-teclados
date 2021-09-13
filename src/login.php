@@ -43,20 +43,36 @@
     button.btn:hover {
         color: var(--white);
     }
+
+    .error-message {
+        color: var(--pink);
+    }
 </style>
 
 <body class="bg-dark" style="--bs-bg-opacity: .95;">
     <main class="form-signin text-center">
         <form class="bg-dark" method="POST" action="user_validation.php">
-            <img class="mb-4" src="/assets/tectok-text-white.svg" alt="TecTok Teclados">
+            <a href="/" title="Página inicial">
+                <img class="mb-4" src="/assets/tectok-text-white.svg" alt="TecTok Teclados">
+            </a>
             <div class="form-floating my-2">
                 <input name="user_email" required type="email" class="form-control" id="floatingInput" placeholder="nome@tectok.com">
                 <label for="floatingInput">E-mail</label>
             </div>
+            <?php if ($_GET['invalid_email_error']) { ?>
+                <p class="error-message m-0">
+                    E-mail não cadastrado
+                </p>
+            <?php } ?>
             <div class="form-floating my-2">
                 <input name="user_password" required type="password" class="form-control" id="floatingPassword" placeholder="Senha">
                 <label for="floatingPassword">Senha</label>
             </div>
+            <?php if ($_GET['wrong_password_error']) { ?>
+                <p class="error-message m-0">
+                    Senha incorreta
+                </p>
+            <?php } ?>
             <button class="my-3 w-100 btn btn-lg fw-bolder" type="submit">Entrar</button>
             <a href="#">Ainda não tenho uma conta</a>
         </form>

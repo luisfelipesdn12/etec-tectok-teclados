@@ -5,13 +5,17 @@ include __DIR__ . '/database.php';
 $user_email = $_POST['user_email'];
 $user_password = $_POST['user_password'];
 
-echo "email: $user_email - senha: $user_password <br>";
-
 $user = $db->get_user_by_email($user_email);
 
 if ($user) {
-    echo "EXISTE usuário cadastrado com esse email <br>";
-    echo $user['password'] == $user_password ? "Senha correta <br>" : "Senha incorreta <br>";
+    // Check password
+    if ($user['password'] == $user_password) {
+        session_start();
+        $_SESSION['id'] = $user['id'];
+        header("Location: /" );
+    } else {
+        header("Location: /login.php?wrong_password_error=1");
+    }
 } else {
-    echo "NÃO EXISTE usuário cadastrado com esse email <br>";
+    header("Location: /login.php?invalid_email_error=1");
 }
