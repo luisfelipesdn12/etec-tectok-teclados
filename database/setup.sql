@@ -20,3 +20,13 @@ create table product (
     is_new boolean not null default false,
     constraint fk_category_id foreign key(category_id) references category(id)
 ) default charset utf8;
+
+create table user (
+    id int primary key auto_increment,
+    name varchar(200) not null,
+    email varchar(200) not null,
+    password varchar(200) not null,
+    type enum('admin', 'regular') not null default 'regular',
+    cep char(8) not null,
+    address_number int not null
+) default charset utf8;

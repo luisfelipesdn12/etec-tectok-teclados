@@ -19,3 +19,8 @@ values (default, 'Teclado ePBT Sweet', 389.90, 'Com cores em tons pastéis contr
         10, 'https://i.ibb.co/j4sgLmW/image.png', 1, false),
        (default, 'Luvas Quentinhas para digitação', 39.9, 'Luvinhas para digitação mesmo em um um dia friozinho. Confortáveis e quentinhas.',
         10, 'https://i.ibb.co/4S2thkr/image.png', 7, false);
+
+insert into user
+values (default, 'Luis Felipe', 'luisfelipesdn12@gmail.com', 'nDwzAPz5fF8Nl43u', 'admin', '17560057', 1000),
+       (default, 'Yuri', 'yuri@discovery.kids', 'golias<3', default, '13233300', 544),
+       (default, 'Golias', 'golias@discovery.kids', 'yuriS2', default, '12919381', 956);
