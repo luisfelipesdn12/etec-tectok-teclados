@@ -21,6 +21,10 @@ class DatabaseConnection
         }
 
         $this->connection = new PDO("$engine:host=$host;dbname=$name;charset=utf8", $user, $password);
+
+        // Prevent SQL inejection with prepare.
+        // https://dev.to/butalin/how-i-prevent-sql-injection-in-my-php-code-ijj
+        $this->connection->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
     }
 
     function get_products($fields = "*")
