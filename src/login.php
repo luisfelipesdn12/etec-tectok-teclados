@@ -56,8 +56,8 @@
                 <img class="mb-4" src="/assets/tectok-text-white.svg" alt="TecTok Teclados">
             </a>
             <div class="form-floating my-2">
-                <input name="user_email" required type="email" class="form-control" id="floatingInput" placeholder="nome@tectok.com">
-                <label for="floatingInput">E-mail</label>
+                <input name="user_email" required type="email" class="form-control" id="user_email" placeholder="nome@tectok.com">
+                <label for="user_email">E-mail</label>
             </div>
             <?php if ($_GET['invalid_email_error']) { ?>
                 <p class="error-message m-0">
@@ -65,8 +65,8 @@
                 </p>
             <?php } ?>
             <div class="form-floating my-2">
-                <input name="user_password" required type="password" class="form-control" id="floatingPassword" placeholder="Senha">
-                <label for="floatingPassword">Senha</label>
+                <input name="user_password" required type="password" class="form-control" id="user_password" placeholder="Senha">
+                <label for="user_password">Senha</label>
             </div>
             <?php if ($_GET['wrong_password_error']) { ?>
                 <p class="error-message m-0">
@@ -74,7 +74,7 @@
                 </p>
             <?php } ?>
             <button class="my-3 w-100 btn btn-lg fw-bolder" type="submit">Entrar</button>
-            <a href="#">Ainda não tenho uma conta</a>
+            <a href="/signup.php">Ainda não tenho uma conta</a>
         </form>
     </main>
 </body>
