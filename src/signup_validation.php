@@ -16,5 +16,5 @@ if ($existent_user) {
 } else {
     // Insert user in database
     $db->create_user($user_name, $user_email, $user_password, $user_cep, $user_address_number);
-    header("Location: /login.php");
+    header("Location: /login.php?signup_sucess=1");
 }

@@ -47,9 +47,33 @@
     .error-message {
         color: var(--pink);
     }
+
+    #account-creation-sucess-toast {
+        background-color: var(--blue);
+        max-width: 330px;
+    }
 </style>
 
 <body class="bg-dark" style="--bs-bg-opacity: .95;">
+    <div class="position-fixed top-0 end-0 p-3 d-flex justify-content-center" style="z-index: 11; max-width: 100%; width: 100%;">
+        <div id="account-creation-sucess-toast" class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex text-center">
+                <div class="toast-body text-center">
+                    Conta criada! Pode fazer seu login :)
+                </div>
+                <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+
+    <?php if ($_GET['signup_sucess']) { ?>
+        <script>
+            const toast = new bootstrap.Toast(document.getElementById("account-creation-sucess-toast"));
+            console.log(toast);
+            toast.show();
+        </script>
+    <?php } ?>
+
     <main class="form-signin text-center">
         <form class="bg-dark" method="POST" action="login_validation.php">
             <a href="/" title="Página inicial">
