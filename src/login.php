@@ -51,7 +51,7 @@
 
 <body class="bg-dark" style="--bs-bg-opacity: .95;">
     <main class="form-signin text-center">
-        <form class="bg-dark" method="POST" action="user_validation.php">
+        <form class="bg-dark" method="POST" action="login_validation.php">
             <a href="/" title="Página inicial">
                 <img class="mb-4" src="/assets/tectok-text-white.svg" alt="TecTok Teclados">
             </a>

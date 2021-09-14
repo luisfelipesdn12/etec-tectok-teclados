@@ -25,6 +25,7 @@ class DatabaseConnection
         // Prevent SQL inejection with prepare.
         // https://dev.to/butalin/how-i-prevent-sql-injection-in-my-php-code-ijj
         $this->connection->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+        $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
     function get_products($fields = "*")
@@ -85,6 +86,20 @@ class DatabaseConnection
         $query->execute();
         $user = $query->fetch();
         return $user;
+    }
+
+    function create_user($name, $email, $password, $cep, $address_number)
+    {
+        $query = $this->connection->prepare("insert into user values (default, :name, :email, :password, default, :cep, :address_number)");
+
+        $cep = str_replace("-", "", $cep);
+
+        $query->bindParam(":name", $name);
+        $query->bindParam(":email", $email);
+        $query->bindParam(":password", $password);
+        $query->bindParam(":cep", $cep);
+        $query->bindParam(":address_number", $address_number);
+        $query->execute();
     }
 }
 

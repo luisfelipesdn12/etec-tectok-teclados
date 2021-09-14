@@ -58,7 +58,7 @@
 
 <body class="bg-dark" style="--bs-bg-opacity: .95;">
     <main class="form-signin text-center">
-        <form class="bg-dark" method="POST" action="">
+        <form class="bg-dark" method="POST" action="signup_validation.php">
             <a href="/" title="Página inicial">
                 <img class="mb-4" src="/assets/tectok-text-white.svg" alt="TecTok Teclados">
             </a>
@@ -70,6 +70,11 @@
                 <input name="user_email" required maxlength="200" type="email" class="form-control" id="user_email" placeholder="nome@tectok.com">
                 <label for="user_email">E-mail</label>
             </div>
+            <?php if ($_GET['existent_email_error']) { ?>
+                <p class="error-message m-0">
+                    E-mail já cadastrado
+                </p>
+            <?php } ?>
             <div class="form-floating my-2">
                 <input name="user_password" required maxlength="200" type="password" class="form-control" id="user_password" placeholder="Senha">
                 <label for="user_password">Senha</label>
