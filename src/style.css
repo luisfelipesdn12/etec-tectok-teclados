@@ -28,8 +28,8 @@ hr {
     opacity: 0.1 !important;
 }
 
-.row {
-    justify-content: space-around;
+.product-card {
+    margin: 0 0.5%;
 }
 
 .badge.badge-category {

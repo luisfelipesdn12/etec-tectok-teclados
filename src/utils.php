@@ -17,7 +17,7 @@ function render_error($message, Exception $e = null)
 
 function render_product($product)
 { ?>
-    <div class="col-sm-3 bg-dark rounded p-2">
+    <div class="product-card col-sm-3 bg-dark rounded p-2">
         <div class="product-image-container bg-secondary bg-opacity-25" style="background-image: url(<?php echo $product['image_url'] ?>);"></div>
         <div class="px-2 pb-2">
             <div>
