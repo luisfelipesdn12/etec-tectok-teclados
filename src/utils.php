@@ -33,7 +33,7 @@ function render_product($product)
             </div>
             <hr>
             <div>
-                <button class="btn-product btn btn-dark w-100 d-flex justify-content-center align-items-center my-2">
+                <button class="btn-product btn btn-dark w-100 d-flex justify-content-center align-items-center my-2" onclick="location.href='<?php echo 'details.php?product_id=' . $product['id']; ?>'">
                     <span class="material-icons-outlined">
                         info
                     </span>

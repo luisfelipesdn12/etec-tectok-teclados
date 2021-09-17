@@ -6,7 +6,7 @@
         <?php
 
         try {
-            $products = $db->get_products("image_url, name, description, price, quantity_available");
+            $products = $db->get_products("id, image_url, name, description, price, quantity_available");
 
             if (empty($products)) {
                 render_error("Não há nenhum produto.");

@@ -34,6 +34,15 @@ class DatabaseConnection
         return $products;
     }
 
+    function get_product_by_id($id, $fields = "*")
+    {
+        $query = $this->connection->prepare("select $fields from product where id = :id");
+        $query->bindParam(":id", $id);
+        $query->execute();
+        $product = $query->fetch();
+        return $product;
+    }
+
     function get_only_new_products($fields = "*")
     {
         $products = $this->connection->query("select $fields from product_with_category where is_new = true")->fetchAll();
