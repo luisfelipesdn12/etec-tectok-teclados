@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+<?php session_start(); ?>
 <?php include __DIR__ . '/database.php'; ?>
 <?php include __DIR__ . '/utils.php'; ?>
 
@@ -16,7 +17,7 @@
         $category_id = $_GET['id'];
         try {
             $category = $db->get_category_by_id($category_id);
-            $products = $db->get_products_from_category_id($category_id, "image_url, name, description, price, quantity_available");
+            $products = $db->get_products_from_category_id($category_id, "id, image_url, name, description, price, quantity_available");
 
             if (isset($category)) { ?>
                 <section class="p-5">

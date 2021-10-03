@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+<?php session_start(); ?>
 <?php include __DIR__ . '/database.php'; ?>
 <?php include __DIR__ . '/utils.php'; ?>
 
@@ -18,7 +19,7 @@
         <div class="row" style="row-gap: 20px;">
             <?php
             try {
-                $products = $db->get_only_new_products();
+                $products = $db->get_only_new_products("id, image_url, name, description, price, quantity_available");
 
                 if (empty($products)) {
                     render_error("Não há nenhum produto.");

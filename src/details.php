@@ -32,6 +32,39 @@ include __DIR__ . '/utils.php';
         .badge {
             background-color: var(--blue);
         }
+
+        button.btn#buy-btn {
+            width: 10rem;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--black);
+            background-color: var(--blue);
+        }
+
+        @media (max-width: 768px) {
+            #product-details-container {
+                display: block;
+            }
+
+            #product-info-container {
+                padding: 2rem 0;
+            }
+
+            #product-display-container {
+                width: 50%;
+            }
+
+        }
+
+        @media (max-width: 450px) {
+            #product-display-container {
+                width: 100%;
+            }
+
+            button.btn#buy-btn {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 
@@ -43,6 +76,8 @@ include __DIR__ . '/utils.php';
 
     ?>
     <?php
+    header("Location: /");
+
     if (isset($_GET['product_id'])) {
         $product_id = $_GET['product_id'];
         try {
@@ -58,22 +93,18 @@ include __DIR__ . '/utils.php';
                             <h1 class="mb-4">
                                 <?php echo $product['name'] ?>
                             </h1>
-                            <p>
+                            <p class="fs-5">
                                 <?php echo $product['description'] ?>
                             </p>
-                            <p>
-                                <?php echo $product['price'] ?>
+                            <p class="fs-4 fw-bolder m-0" style="color: var(--pink);">
+                                R$ <?php echo number_format($product['price'], 2, ',', '.') ?>
                             </p>
-                            <p>
-                                <?php echo $product['quantity_available'] ?> disponíveis
+                            <p class="text-muted">
+                                <?php echo $product['quantity_available'] ?> unidades disponíveis
                             </p>
-                            <?php if ($product['is_new'] == true) { ?>
-                                <h2>
-                                    <span class="badge">
-                                        Novidade
-                                    </span>
-                                </h2>
-                            <?php } ?>
+                            <button class="btn" id="buy-btn">
+                                Comprar
+                            </button>
                         </div>
                     </div>
                 </section>
