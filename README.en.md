@@ -20,6 +20,8 @@ Translations: [:brazil: Português (BR)](README.md)
 - 💥 "New products" section
 - 🔖 Section for each category
 - 🆔 User log-in
+- 🔍 Search System
+- 👤 Administrator section
 - 🌐 Deploy to the web and Git-based updates
 
 ## Demo

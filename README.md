@@ -20,6 +20,8 @@ Translations: [:us: English](README.en.md)
 - 💥 Seção de "novidades"
 - 🔖 Seção para cada categoria
 - 🆔 Log-in de usuário
+- 🔍 Sistema de buscas
+- 👤 Seção de administrador
 - 🌐 Implantação do site na web e atualizações baseadas em Git
 
 ## Demo
