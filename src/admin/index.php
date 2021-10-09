@@ -45,7 +45,7 @@
             Área Administrativa
         </h1>
         <div class="row" style="row-gap: 20px;">
-            <button class="admin-option btn col-sm-5 bg-dark rounded mx-2">
+            <button class="admin-option btn col-sm-5 bg-dark rounded mx-2" onclick="location.href='/admin/add.php'">
                 <img src="https://img.icons8.com/material-outlined/250/69C9D0/add" alt="Adicionar">
                 <p>Incluir Produto</p>
             </button>
