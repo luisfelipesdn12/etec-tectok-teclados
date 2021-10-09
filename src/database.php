@@ -24,7 +24,8 @@ class DatabaseConnection
 
         // Prevent SQL inejection with prepare.
         // https://dev.to/butalin/how-i-prevent-sql-injection-in-my-php-code-ijj
-        $this->connection->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+        // https://stackoverflow.com/a/35375592/12534588
+        $this->connection->setAttribute(PDO::ATTR_EMULATE_PREPARES, true);
         $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
@@ -53,6 +54,17 @@ class DatabaseConnection
     {
         $query = $this->connection->prepare("select $fields from product_with_category where category_id=:category_id");
         $query->bindParam(":category_id", $category_id);
+        $query->execute();
+        $products = $query->fetchAll();
+        return $products;
+    }
+
+    function get_products_from_search_term($search_term, $fields = "*")
+    {
+        // https://stackoverflow.com/a/7357296/12534588
+        // $query = $this->connection->prepare("select $fields from product_with_category where name like concat('%', :search_term, '%')");
+        $query = $this->connection->prepare("select $fields from product_with_category where name like concat('%', :search_term, '%') or description like concat('%', :search_term, '%');");
+        $query->bindParam(":search_term", $search_term);
         $query->execute();
         $products = $query->fetchAll();
         return $products;

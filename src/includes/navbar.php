@@ -58,8 +58,8 @@ $is_logged_in = !empty($_SESSION['user']);
                 <?php }
                 } catch (Exception $e) {
                 } ?>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Faça uma pesquisa..." aria-label="Faça uma pesquisa...">
+                <form class="d-flex" action="search.php">
+                    <input class="form-control me-2" name="q" type="search" placeholder="Faça uma pesquisa..." aria-label="Faça uma pesquisa..." value="<?php echo $_GET['q']; ?>" required>
                     <button class="material-icons-outlined btn btn-dark" type="submit">
                         search
                     </button>
