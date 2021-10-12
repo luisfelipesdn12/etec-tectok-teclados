@@ -68,7 +68,7 @@ $is_logged_in = !empty($_SESSION['user']);
             <div class="d-flex justify-content-between align-items-center">
                 <?php if ($is_logged_in) {?>
                     <a
-                        href="<?php echo $_SESSION['user']['type'] == 'admin' ? '/admin' : '#' ?>"
+                        href="<?php echo is_admin() ? '/admin' : '#' ?>"
                         class="d-flex justify-content-between align-items-center m-0 badge text-dark"
                         style="font-size: 0.9rem; height: 100%; background-color: var(--blue); text-decoration: none;"
                     >
@@ -76,7 +76,7 @@ $is_logged_in = !empty($_SESSION['user']);
                             account_circle
                         </span>
                         <?php echo $_SESSION['user']['name']; ?>
-                        <?php echo $_SESSION['user']['type'] == 'admin' ? ' (Admin)' : '' ?>
+                        <?php echo is_admin() ? ' (Admin)' : '' ?>
                     </a>
                 <?php } ?>
                 <a href="https://github.com/luisfelipesdn12/etec-tectok-teclados" target="_blank" rel="noopener noreferrer" class="btn btn-dark" title="Código Fonte">

@@ -6,7 +6,7 @@ session_start();
 include __DIR__ . '/../database.php';
 include __DIR__ . '/../utils.php';
 
-if (empty($_SESSION['user']) || $_SESSION['user']['type'] != 'admin') {
+if (!is_admin()) {
     header("Location: /");
 }
 ?>

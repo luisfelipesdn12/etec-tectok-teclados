@@ -1,5 +1,10 @@
 <?php
 
+session_start();
+if (!is_admin()) {
+    header("Location: /" );
+}
+
 require __DIR__ . '/../../vendor/autoload.php';
 include __DIR__ . '/../database.php';
 

@@ -65,3 +65,7 @@ function render_products($products)
         render_product($product);
     }
 }
+
+function is_admin() {
+    return !empty($_SESSION['user']) && $_SESSION['user']['type'] == 'admin';
+}
