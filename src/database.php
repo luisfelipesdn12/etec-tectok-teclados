@@ -122,6 +122,19 @@ class DatabaseConnection
         $query->bindParam(":address_number", $address_number);
         $query->execute();
     }
+
+    function create_product($name, $price, $description, $quantity_available, $image_url, $category_id, $is_new) {
+        $query = $this->connection->prepare("insert into product values (default, :name, :price, :description, :quantity_available, :image_url, :category_id, :is_new)");
+
+        $query->bindParam(":name", $name);
+        $query->bindParam(":price", $price);
+        $query->bindParam(":description", $description);
+        $query->bindParam(":quantity_available", $quantity_available);
+        $query->bindParam(":image_url", $image_url);
+        $query->bindParam(":category_id", $category_id);
+        $query->bindParam(":is_new", $is_new);
+        $query->execute();
+    }
 }
 
 try {

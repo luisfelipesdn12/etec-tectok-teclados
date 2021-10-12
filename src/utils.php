@@ -16,7 +16,12 @@ function render_error($message, Exception $e = null)
 }
 
 function render_product($product)
-{ ?>
+{
+    if (!filter_var($product['image_url'], FILTER_VALIDATE_URL)) {
+        $product['image_url'] = '/assets/products/' . $product['image_url'];
+    }
+
+    ?>
     <div class="product-card col-sm-3 bg-dark rounded p-2">
         <div class="product-image-container bg-secondary bg-opacity-25" style="background-image: url(<?php echo $product['image_url'] ?>);"></div>
         <div class="px-2 pb-2">

@@ -50,6 +50,10 @@ hr {
     background-repeat: no-repeat;
 }
 
+.error-message {
+    color: var(--pink);
+}
+
 @media (min-width: 576px) {
     .col-sm-3 {
         width: 24% !important;

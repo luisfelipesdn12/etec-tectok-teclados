@@ -44,10 +44,6 @@
     button.btn:hover {
         color: var(--white);
     }
-
-    .error-message {
-        color: var(--pink);
-    }
 </style>
 
 <script>
