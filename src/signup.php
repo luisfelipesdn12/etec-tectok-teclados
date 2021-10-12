@@ -97,33 +97,40 @@
 </body>
 
 <script>
-    const cepInput = document.getElementById("user_cep");
-    const addressInput = document.getElementById("user_address");
-    const submitButton = document.getElementById("submit-signup-button");
+    class CEPCompleter {
+        constructor(cepIputId, addressInputId, submitButtonId, errorNoticeId) {
+            this.cepInput = document.getElementById(cepIputId);
+            this.addressInput = document.getElementById(addressInputId);
+            this.submitButton = document.getElementById(submitButtonId);
+            this.errorNotice = document.getElementById(errorNoticeId);
 
-    cepInput.onchange = () => {
-        const cep = cepInput.value && cepInput.value.replace("-", "");
+            this.cepInput.onchange = () => {
+                const cep = this.cepInput.value && this.cepInput.value.replace("-", "");
 
-        if (cep && cep.length == 8) {
-            fetch(`https://viacep.com.br/ws/${cep}/json`)
-                .then(res => res.json())
-                .then(data => {
-                    if (data["erro"] == true) {
-                        throw new Error("API returned error");
-                    }
+                if (cep && cep.length == 8) {
+                    fetch(`https://viacep.com.br/ws/${cep}/json`)
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data["erro"] == true) {
+                                throw new Error("API returned error");
+                            }
 
-                    submitButton.disabled = false;
-                    addressInput.value = `${data["logradouro"]} - ${data["localidade"]}`;
-                    document.getElementById("cep-error-notice").style.display = "none";
-                })
-                .catch(err => {
-                    console.error(err);
-                    addressInput.value = "";
-                    submitButton.disabled = true;
-                    document.getElementById("cep-error-notice").style.display = "block";
-                });
+                            this.submitButton.disabled = false;
+                            this.addressInput.value = `${data["logradouro"]} - ${data["localidade"]}`;
+                            this.errorNotice.style.display = "none";
+                        })
+                        .catch(err => {
+                            console.error(err);
+                            this.addressInput.value = "";
+                            this.submitButton.disabled = true;
+                            this.errorNotice.style.display = "block";
+                        });
+                }
+            };
         }
-    };
+    }
+
+    new CEPCompleter("user_cep", "user_address", "submit-signup-button", "cep-error-notice");
 </script>
 
 </html>
