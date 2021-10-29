@@ -33,12 +33,13 @@ include __DIR__ . '/utils.php';
             background-color: var(--blue);
         }
 
-        button.btn#buy-btn {
+        #product-info-container button.btn {
             width: 10rem;
             font-size: 1.2rem;
             font-weight: 500;
             color: var(--black);
             background-color: var(--blue);
+            margin: 0.1rem 0;
         }
 
         @media (max-width: 768px) {
@@ -61,7 +62,7 @@ include __DIR__ . '/utils.php';
                 width: 100%;
             }
 
-            button.btn#buy-btn {
+            #product-info-container button.btn {
                 width: 100%;
             }
         }
@@ -83,6 +84,10 @@ include __DIR__ . '/utils.php';
         try {
             $product = $db->get_product_by_id($product_id);
 
+            if (!filter_var($product['image_url'], FILTER_VALIDATE_URL)) {
+                $product['image_url'] = '/assets/products/' . $product['image_url'];
+            }
+
             if (isset($product)) { ?>
                 <section class="p-5">
                     <div id="product-details-container">
@@ -102,9 +107,17 @@ include __DIR__ . '/utils.php';
                             <p class="text-muted">
                                 <?php echo $product['quantity_available'] ?> unidades disponíveis
                             </p>
-                            <button class="btn" id="buy-btn">
+                            <button class="btn">
                                 Comprar
                             </button>
+                            <?php if (is_admin()) { ?>
+                                <button class="btn" style="background-color: var(--white);" onclick="location.href='/admin/edit.php?product_id=<?php echo $product_id; ?>'">
+                                    Alterar
+                                </button>
+                                <button class="btn" style="background-color: var(--pink);">
+                                    Excluir
+                                </button>
+                            <?php } ?>
                         </div>
                     </div>
                 </section>

@@ -18,7 +18,7 @@ $is_logged_in = !empty($_SESSION['user']);
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href=".">
+        <a class="navbar-brand" href="/">
             <picture>
                 <source srcset="/assets/tectok-only-text-white.svg" media="(max-width: 600px)">
                 <img id="nav-text-logo" src="/assets/tectok-text-white.svg" alt="TecTok Teclados" title="TecTok Teclados">
@@ -30,7 +30,7 @@ $is_logged_in = !empty($_SESSION['user']);
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href=".">Início</a>
+                    <a class="nav-link active" aria-current="page" href="/">Início</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="news.php">Novidades</a>

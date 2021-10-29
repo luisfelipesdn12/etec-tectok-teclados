@@ -6,8 +6,14 @@ session_start();
 include __DIR__ . '/../database.php';
 include __DIR__ . '/../utils.php';
 
-if (!is_admin()) {
+if (!is_admin() || !isset($_GET['product_id'])) {
     header("Location: /");
+}
+
+$product = $db->get_product_by_id($_GET['product_id']);
+
+if (!filter_var($product['image_url'], FILTER_VALIDATE_URL)) {
+    $product['image_url'] = '/assets/products/' . $product['image_url'];
 }
 ?>
 
@@ -55,6 +61,22 @@ if (!is_admin()) {
         background-color: var(--pink);
         max-width: 330px;
     }
+
+    #product-display-container {
+        width: 40%;
+    }
+
+    @media (max-width: 768px) {
+        #product-display-container {
+            width: 50%;
+        }
+    }
+
+    @media (max-width: 450px) {
+        #product-display-container {
+            width: 100%;
+        }
+    }
 </style>
 
 <script>
@@ -88,31 +110,39 @@ if (!is_admin()) {
     <?php } ?>
 
     <main class="p-5">
+        <?php if (!$product) { ?>
+            <p class="error-message m-0">
+                Produto não encontrado.
+            </p>
+        <?php } ?>
         <h1 class="mb-4">
-            Adicionar Produto
+            Alterar Produto
         </h1>
-        <form method="POST" action="add_validation.php" enctype="multipart/form-data">
+        <div id="product-display-container">
+            <div class="product-image-container bg-secondary bg-opacity-25" style="background-image: url(<?php echo $product['image_url'] ?>);"></div>
+        </div>
+        <form method="POST" action="edit_validation.php" enctype="multipart/form-data">
             <h2 class="my-4">
                 Informações
             </h2>
             <div class="form-floating my-2">
-                <input name="name" required maxlength="200" type="text" class="form-control" id="name" placeholder="Nome">
+                <input value="<?php echo $product['name'] ?>" name="name" required maxlength="200" type="text" class="form-control" id="name" placeholder="Nome">
                 <label for="name">Nome</label>
             </div>
             <div class="form-floating my-2">
-                <input name="price" required type="text" class="form-control" id="price" placeholder="Preço">
+                <input value="<?php echo $product['price'] ?>" name="price" required type="text" class="form-control" id="price" placeholder="Preço">
                 <label for="price">Preço</label>
             </div>
             <div class="form-floating my-2">
-                <textarea name="description" required maxlength="2000" type="" class="form-control" id="description" placeholder="Descrição"></textarea>
+                <textarea value="<?php echo $product['description'] ?>" name="description" required maxlength="2000" type="" class="form-control" id="description" placeholder="Descrição"></textarea>
                 <label for="description">Descrição</label>
             </div>
             <div class="form-floating my-2">
-                <input name="quantity_available" required type="number" class="form-control" id="quantity_available" placeholder="Quantidade disponível">
+                <input value="<?php echo $product['quantity_available'] ?>" name="quantity_available" required type="number" class="form-control" id="quantity_available" placeholder="Quantidade disponível">
                 <label for="quantity_available">Quantidade disponível</label>
             </div>
             <div class="form-floating my-2">
-                <select name="category_id" id="category_id" class="form-select" placeholder="Categoria" required>
+                <select value="<?php echo $product['category_id'] ?>" name="category_id" id="category_id" class="form-select" placeholder="Categoria" required>
                     <?php
                     $categories = $db->get_categories("id, name");
 
@@ -125,7 +155,7 @@ if (!is_admin()) {
                 <label for="category_id">Categoria</label>
             </div>
             <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="is_new" name="is_new">
+                <input <?php if ($product['is_new']) { ?>checked<?php } ?> class="form-check-input" type="checkbox" role="switch" id="is_new" name="is_new">
                 <label class="form-check-label text-white" for="is_new">Novidade</label>
             </div>
             <h2 class="my-4">
@@ -137,20 +167,25 @@ if (!is_admin()) {
                 </p>
             <?php } ?>
             <div class="form-floating my-2">
-                <select name="image_source_type" id="image_source_type" class="form-select" placeholder="Fonte da imagem" value="local" required>
-                    <option value="local">Upload de arquivo local</option>
-                    <option value="url">URL da internet</option>
+                <select name="image_source_type" id="image_source_type" class="form-select" placeholder="Fonte da imagem" value="url">
+                    <?php if (filter_var($product['image_url'], FILTER_VALIDATE_URL)) { ?>
+                        <option value="url">URL da internet</option>
+                        <option value="local">Upload de arquivo local</option>
+                    <?php } else { ?>
+                        <option value="local">Upload de arquivo local</option>
+                        <option value="url">URL da internet</option>
+                    <?php } ?>
                 </select>
                 <label for="image_source_type">Fonte da imagem</label>
             </div>
             <div class="form-floating my-2" id="image_url_container">
-                <input name="image_url" required maxlength="500" type="url" class="form-control" id="image_url" placeholder="URL da imagem">
+                <input name="image_url" maxlength="500" type="url" class="form-control" id="image_url" placeholder="URL da imagem">
                 <label for="image_url">URL da imagem</label>
             </div>
             <div class="my-2" id="product_image_container">
-                <input name="product_image" required type="file" accept="image/*" class="form-control" id="product_image">
+                <input name="product_image" type="file" accept="image/*" class="form-control" id="product_image">
             </div>
-            <button class="my-3 w-100 btn btn-lg fw-bolder" type="submit">Cadastrar</button>
+            <button class="my-3 w-100 btn btn-lg fw-bolder" type="submit">Alterar</button>
         </form>
     </main>
     <script>

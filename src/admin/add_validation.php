@@ -1,19 +1,20 @@
 <?php
 
+require __DIR__ . '/../../vendor/autoload.php';
+include __DIR__ . '/../database.php';
+include __DIR__ . '/../utils.php';
+
 session_start();
 if (!is_admin()) {
     header("Location: /" );
 }
-
-require __DIR__ . '/../../vendor/autoload.php';
-include __DIR__ . '/../database.php';
 
 use Hidehalo\Nanoid\Client as NanoId;
 
 $nano_id = new NanoId();
 
 $name = $_POST['name'];
-$price = $_POST['price'];
+$price = str_replace(',', '.', str_replace('.', '', $_POST['price']));
 $description = $_POST['description'];
 $quantity_available = $_POST['quantity_available'];
 $image_url = $_POST['image_url'];
