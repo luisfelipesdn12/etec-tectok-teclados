@@ -123,7 +123,8 @@ class DatabaseConnection
         $query->execute();
     }
 
-    function create_product($name, $price, $description, $quantity_available, $image_url, $category_id, $is_new) {
+    function create_product($name, $price, $description, $quantity_available, $image_url, $category_id, $is_new)
+    {
         $query = $this->connection->prepare("insert into product values (default, :name, :price, :description, :quantity_available, :image_url, :category_id, :is_new)");
 
         $query->bindParam(":name", $name);
@@ -133,6 +134,35 @@ class DatabaseConnection
         $query->bindParam(":image_url", $image_url);
         $query->bindParam(":category_id", $category_id);
         $query->bindParam(":is_new", $is_new);
+        $query->execute();
+    }
+
+    function edit_product($product_id, $name, $price, $description, $quantity_available, $category_id, $is_new, $edit_image = false, $image_url = null)
+    {
+        $query = null;
+
+        if ($edit_image) {
+            $query = $this->connection->prepare("update product set name = :name, price = :price, description = :description, quantity_available = :quantity_available, category_id = :category_id, is_new = :is_new, image_url = :image_url where id = :product_id");
+            $query->bindParam(":image_url", $image_url);
+        } else {
+            $query = $this->connection->prepare("update product set name = :name, price = :price, description = :description, quantity_available = :quantity_available, category_id = :category_id, is_new = :is_new where id = :product_id");
+        }
+
+        $query->bindParam(":product_id", $product_id);
+        $query->bindParam(":name", $name);
+        $query->bindParam(":price", $price);
+        $query->bindParam(":description", $description);
+        $query->bindParam(":quantity_available", $quantity_available);
+        $query->bindParam(":category_id", $category_id);
+        $query->bindParam(":is_new", $is_new);
+        $query->execute();
+    }
+
+    function delete_product($product_id)
+    {
+        $query = $this->connection->prepare("delete from product where id = :product_id");
+
+        $query->bindParam(":product_id", $product_id);
         $query->execute();
     }
 }

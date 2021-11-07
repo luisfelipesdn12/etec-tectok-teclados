@@ -67,6 +67,10 @@ include __DIR__ . '/utils.php';
             }
         }
     </style>
+
+    <script>
+        let deleteConfirmModal = document.getElementById('deleteConfirmModal');
+    </script>
 </head>
 
 <body class="bg-dark" style="--bs-bg-opacity: .95;">
@@ -89,34 +93,54 @@ include __DIR__ . '/utils.php';
             }
 
             if (isset($product)) { ?>
+                <div class="modal fade" id="deleteConfirmModal" aria-hidden="true" aria-labelledby="deleteConfirmModalLabel" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered" style="width: max-content;">
+                        <div class="bg-dark modal-content">
+                            <div class="modal-body">
+                                <p>Tem certeza que deseja excluir este item?</p>
+                                <div class="d-flex justify-content-between">
+                                    <button type="button" class="btn btn-secondary px-4" data-bs-dismiss="modal">Cancelar</button>
+                                    <button type="button" class="btn btn-primary px-4" style="background: var(--pink); border: none;" onclick="location.href='/admin/delete_validation.php?product_id=<?= $product_id; ?>'">Excluir</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <section class="p-5">
                     <div id="product-details-container">
                         <div id="product-display-container">
-                            <div class="product-image-container bg-secondary bg-opacity-25" style="background-image: url(<?php echo $product['image_url'] ?>);"></div>
+                            <div class="product-image-container bg-secondary bg-opacity-25" style="background-image: url(<?= $product['image_url'] ?>);"></div>
                         </div>
                         <div id="product-info-container">
                             <h1 class="mb-4">
-                                <?php echo $product['name'] ?>
+                                <?= $product['name'] ?>
                             </h1>
                             <p class="fs-5">
-                                <?php echo $product['description'] ?>
+                                <?= $product['description'] ?>
                             </p>
                             <p class="fs-4 fw-bolder m-0" style="color: var(--pink);">
-                                R$ <?php echo number_format($product['price'], 2, ',', '.') ?>
+                                R$ <?= number_format($product['price'], 2, ',', '.') ?>
                             </p>
                             <p class="text-muted">
-                                <?php echo $product['quantity_available'] ?> unidades disponíveis
+                                <?= $product['quantity_available'] ?> unidades disponíveis
                             </p>
                             <button class="btn">
                                 Comprar
                             </button>
+
+
                             <?php if (is_admin()) { ?>
-                                <button class="btn" style="background-color: var(--white);" onclick="location.href='/admin/edit.php?product_id=<?php echo $product_id; ?>'">
-                                    Alterar
-                                </button>
-                                <button class="btn" style="background-color: var(--pink);">
-                                    Excluir
-                                </button>
+                                <div>
+                                    <p class="text-muted mt-4 mb-1">
+                                        Funções Administrativas:
+                                    </p>
+                                    <button class="btn" style="background-color: var(--white);" onclick="location.href='/admin/edit.php?product_id=<?= $product_id; ?>'">
+                                        Alterar
+                                    </button>
+                                    <button class="btn" style="background-color: var(--pink);" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal">
+                                        Excluir
+                                    </button>
+                                </div>
                             <?php } ?>
                         </div>
                     </div>

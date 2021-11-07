@@ -82,7 +82,6 @@ if (!is_admin()) {
     <?php if ($_GET['error_db_insert']) { ?>
         <script>
             const toast = new bootstrap.Toast(document.getElementById("db-error-toast"));
-            console.log(toast);
             toast.show();
         </script>
     <?php } ?>
@@ -117,8 +116,8 @@ if (!is_admin()) {
                     $categories = $db->get_categories("id, name");
 
                     foreach ($categories as $category) { ?>
-                        <option value="<?php echo $category['id']; ?>">
-                            <?php echo $category['name']; ?>
+                        <option value="<?= $category['id']; ?>">
+                            <?= $category['name']; ?>
                         </option>
                     <?php } ?>
                 </select>

@@ -48,8 +48,8 @@ $is_logged_in = !empty($_SESSION['user']);
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <?php foreach ($categories as $category) { ?>
                                     <li>
-                                        <a class="dropdown-item" href="/category.php?id=<?php echo $category['id'] ?>">
-                                            <?php echo $category['name'] ?>
+                                        <a class="dropdown-item" href="/category.php?id=<?= $category['id'] ?>">
+                                            <?= $category['name'] ?>
                                         </a>
                                     </li>
                                 <?php } ?>
@@ -59,31 +59,27 @@ $is_logged_in = !empty($_SESSION['user']);
                 } catch (Exception $e) {
                 } ?>
                 <form class="d-flex" action="search.php">
-                    <input class="form-control me-2" name="q" type="search" placeholder="Faça uma pesquisa..." aria-label="Faça uma pesquisa..." value="<?php echo $_GET['q']; ?>" required>
+                    <input id="search-input" class="form-control me-2" name="q" type="search" placeholder="Faça uma pesquisa..." aria-label="Faça uma pesquisa..." value="<?= $_GET['q']; ?>" required>
                     <button class="material-icons-outlined btn btn-dark" type="submit">
                         search
                     </button>
                 </form>
             </ul>
             <div class="d-flex justify-content-between align-items-center">
-                <?php if ($is_logged_in) {?>
-                    <a
-                        href="<?php echo is_admin() ? '/admin' : '#' ?>"
-                        class="d-flex justify-content-between align-items-center m-0 badge text-dark"
-                        style="font-size: 0.9rem; height: 100%; background-color: var(--blue); text-decoration: none;"
-                    >
+                <?php if ($is_logged_in) { ?>
+                    <a href="<?= is_admin() ? '/admin' : '#' ?>" class="d-flex justify-content-between align-items-center m-0 badge text-dark" style="font-size: 0.9rem; height: 100%; background-color: var(--blue); text-decoration: none;">
                         <span class="material-icons-outlined text-dark" style="margin-right: 0.5rem; font-size: 1.25rem;">
                             account_circle
                         </span>
-                        <?php echo $_SESSION['user']['name']; ?>
-                        <?php echo is_admin() ? ' (Admin)' : '' ?>
+                        <?= $_SESSION['user']['name']; ?>
+                        <?= is_admin() ? ' (Admin)' : '' ?>
                     </a>
                 <?php } ?>
                 <a href="https://github.com/luisfelipesdn12/etec-tectok-teclados" target="_blank" rel="noopener noreferrer" class="btn btn-dark" title="Código Fonte">
                     <img src="https://img.icons8.com/material-outlined/250/69C9D0/github" alt="Github" style="height: 24px;">
                 </a>
-                <button class="material-icons-outlined btn btn-dark" title="<?php echo $is_logged_in ? "Sair da conta" : "Entrar na conta"; ?>" onclick="location.href='<?php echo $is_logged_in ? "logout.php" : "login.php"; ?>'">
-                    <?php echo $is_logged_in ? "logout" : "login"; ?>
+                <button class="material-icons-outlined btn btn-dark" title="<?= $is_logged_in ? "Sair da conta" : "Entrar na conta"; ?>" onclick="location.href='<?= $is_logged_in ? "logout.php" : "login.php"; ?>'">
+                    <?= $is_logged_in ? "logout" : "login"; ?>
                 </button>
             </div>
         </div>

@@ -69,7 +69,6 @@
     <?php if ($_GET['signup_sucess']) { ?>
         <script>
             const toast = new bootstrap.Toast(document.getElementById("account-creation-sucess-toast"));
-            console.log(toast);
             toast.show();
         </script>
     <?php } ?>

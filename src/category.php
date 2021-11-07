@@ -22,7 +22,7 @@
             if (isset($category)) { ?>
                 <section class="p-5">
                     <h1 class="mb-4">
-                        <?php echo $category['name'] ?>
+                        <?= $category['name'] ?>
                     </h1>
                     <div class="row" style="row-gap: 20px;"><?php
                         if (empty($products)) {

@@ -12,7 +12,9 @@ if (!is_admin() || !isset($_GET['product_id'])) {
 
 $product = $db->get_product_by_id($_GET['product_id']);
 
-if (!filter_var($product['image_url'], FILTER_VALIDATE_URL)) {
+$is_product_image_an_url = filter_var($product['image_url'], FILTER_VALIDATE_URL);
+
+if (!$is_product_image_an_url) {
     $product['image_url'] = '/assets/products/' . $product['image_url'];
 }
 ?>
@@ -44,6 +46,7 @@ if (!filter_var($product['image_url'], FILTER_VALIDATE_URL)) {
 
     .form-switch .form-check-input {
         background-color: var(--white);
+        border-color: rgba(0, 0, 0, 0.25) !important;
     }
 
     .form-switch .form-check-input:checked {
@@ -51,7 +54,7 @@ if (!filter_var($product['image_url'], FILTER_VALIDATE_URL)) {
     }
 
     .form-switch .form-check-input:focus {
-        border-color: rgba(0, 0, 0, 0.25);
+        border-color: rgba(0, 0, 0, 0.25) !important;
         outline: 0;
         box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
         background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba(0,0,0,0.25)'/></svg>");
@@ -94,7 +97,7 @@ if (!filter_var($product['image_url'], FILTER_VALIDATE_URL)) {
         <div id="db-error-toast" class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="d-flex text-center">
                 <div class="toast-body text-center">
-                    Erro ao inserir produto ao banco de dados.
+                    Erro ao alterar produto ao banco de dados.
                 </div>
                 <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
@@ -104,7 +107,6 @@ if (!filter_var($product['image_url'], FILTER_VALIDATE_URL)) {
     <?php if ($_GET['error_db_insert']) { ?>
         <script>
             const toast = new bootstrap.Toast(document.getElementById("db-error-toast"));
-            console.log(toast);
             toast.show();
         </script>
     <?php } ?>
@@ -119,36 +121,37 @@ if (!filter_var($product['image_url'], FILTER_VALIDATE_URL)) {
             Alterar Produto
         </h1>
         <div id="product-display-container">
-            <div class="product-image-container bg-secondary bg-opacity-25" style="background-image: url(<?php echo $product['image_url'] ?>);"></div>
+            <div class="product-image-container bg-secondary bg-opacity-25" style="background-image: url(<?= $product['image_url'] ?>);"></div>
         </div>
         <form method="POST" action="edit_validation.php" enctype="multipart/form-data">
             <h2 class="my-4">
                 Informações
             </h2>
+            <input type="text" name="product_id" value="<?= $product['id'] ?>" class="d-none">
             <div class="form-floating my-2">
-                <input value="<?php echo $product['name'] ?>" name="name" required maxlength="200" type="text" class="form-control" id="name" placeholder="Nome">
+                <input value="<?= $product['name'] ?>" name="name" required maxlength="200" type="text" class="form-control" id="name" placeholder="Nome">
                 <label for="name">Nome</label>
             </div>
             <div class="form-floating my-2">
-                <input value="<?php echo $product['price'] ?>" name="price" required type="text" class="form-control" id="price" placeholder="Preço">
+                <input value="<?= number_format($product['price'], 2, ',', '.') ?>" name="price" required type="text" class="form-control" id="price" placeholder="Preço">
                 <label for="price">Preço</label>
             </div>
             <div class="form-floating my-2">
-                <textarea value="<?php echo $product['description'] ?>" name="description" required maxlength="2000" type="" class="form-control" id="description" placeholder="Descrição"></textarea>
+                <textarea name="description" required maxlength="2000" type="" class="form-control" id="description" placeholder="Descrição"><?= $product['description'] ?></textarea>
                 <label for="description">Descrição</label>
             </div>
             <div class="form-floating my-2">
-                <input value="<?php echo $product['quantity_available'] ?>" name="quantity_available" required type="number" class="form-control" id="quantity_available" placeholder="Quantidade disponível">
+                <input value="<?= $product['quantity_available'] ?>" name="quantity_available" required type="number" class="form-control" id="quantity_available" placeholder="Quantidade disponível">
                 <label for="quantity_available">Quantidade disponível</label>
             </div>
             <div class="form-floating my-2">
-                <select value="<?php echo $product['category_id'] ?>" name="category_id" id="category_id" class="form-select" placeholder="Categoria" required>
+                <select value="<?= $product['category_id'] ?>" name="category_id" id="category_id" class="form-select" placeholder="Categoria" required>
                     <?php
                     $categories = $db->get_categories("id, name");
 
                     foreach ($categories as $category) { ?>
-                        <option value="<?php echo $category['id']; ?>">
-                            <?php echo $category['name']; ?>
+                        <option value="<?= $category['id']; ?>">
+                            <?= $category['name']; ?>
                         </option>
                     <?php } ?>
                 </select>
@@ -161,29 +164,35 @@ if (!filter_var($product['image_url'], FILTER_VALIDATE_URL)) {
             <h2 class="my-4">
                 Imagem
             </h2>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="edit_image" name="edit_image">
+                <label class="form-check-label text-white" for="edit_image">Editar imagem</label>
+            </div>
             <?php if ($_GET['error_image_process']) { ?>
                 <p class="error-message m-0">
                     Erro ao processar imagem enviada. Tente novamente.
                 </p>
             <?php } ?>
-            <div class="form-floating my-2">
-                <select name="image_source_type" id="image_source_type" class="form-select" placeholder="Fonte da imagem" value="url">
-                    <?php if (filter_var($product['image_url'], FILTER_VALIDATE_URL)) { ?>
-                        <option value="url">URL da internet</option>
-                        <option value="local">Upload de arquivo local</option>
-                    <?php } else { ?>
-                        <option value="local">Upload de arquivo local</option>
-                        <option value="url">URL da internet</option>
-                    <?php } ?>
-                </select>
-                <label for="image_source_type">Fonte da imagem</label>
-            </div>
-            <div class="form-floating my-2" id="image_url_container">
-                <input name="image_url" maxlength="500" type="url" class="form-control" id="image_url" placeholder="URL da imagem">
-                <label for="image_url">URL da imagem</label>
-            </div>
-            <div class="my-2" id="product_image_container">
-                <input name="product_image" type="file" accept="image/*" class="form-control" id="product_image">
+            <div id="edit-image-container">
+                <div class="form-floating my-2">
+                    <select name="image_source_type" id="image_source_type" class="form-select" placeholder="Fonte da imagem" value="url">
+                        <?php if ($is_product_image_an_url) { ?>
+                            <option value="url">URL da internet</option>
+                            <option value="local">Upload de arquivo local</option>
+                        <?php } else { ?>
+                            <option value="local">Upload de arquivo local</option>
+                            <option value="url">URL da internet</option>
+                        <?php } ?>
+                    </select>
+                    <label for="image_source_type">Fonte da imagem</label>
+                </div>
+                <div class="form-floating my-2" id="image_url_container">
+                    <input name="image_url" maxlength="500" type="url" class="form-control" id="image_url" placeholder="URL da imagem" value="<?= $is_product_image_an_url ? $product['image_url'] : '' ?>">
+                    <label for="image_url">URL da imagem</label>
+                </div>
+                <div class="my-2" id="product_image_container">
+                    <input name="product_image" type="file" accept="image/*" class="form-control" id="product_image">
+                </div>
             </div>
             <button class="my-3 w-100 btn btn-lg fw-bolder" type="submit">Alterar</button>
         </form>
@@ -215,6 +224,16 @@ if (!filter_var($product['image_url'], FILTER_VALIDATE_URL)) {
 
         updateImageSourceType();
         imageSourceTypeElement.onchange = updateImageSourceType;
+
+        const editImageOption = document.getElementById("edit_image");
+        const editImageContainer = document.getElementById("edit-image-container");
+
+        const updateEditImageOption = () => {
+            editImageContainer.style.display = editImageOption.checked ? "block" : "none";
+        };
+
+        updateEditImageOption();
+        editImageOption.onchange = updateEditImageOption;
     </script>
     <?php include __DIR__ . '/../includes/footer.html'; ?>
 </body>
