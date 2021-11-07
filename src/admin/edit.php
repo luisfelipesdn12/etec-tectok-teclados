@@ -145,12 +145,12 @@ if (!$is_product_image_an_url) {
                 <label for="quantity_available">Quantidade disponível</label>
             </div>
             <div class="form-floating my-2">
-                <select value="<?= $product['category_id'] ?>" name="category_id" id="category_id" class="form-select" placeholder="Categoria" required>
+                <select name="category_id" id="category_id" class="form-select" placeholder="Categoria" required>
                     <?php
                     $categories = $db->get_categories("id, name");
 
                     foreach ($categories as $category) { ?>
-                        <option value="<?= $category['id']; ?>">
+                        <option value="<?= $category['id']; ?>" <?php if ($category['id'] == $product['category_id']) { ?>selected<?php } ?>>
                             <?= $category['name']; ?>
                         </option>
                     <?php } ?>
