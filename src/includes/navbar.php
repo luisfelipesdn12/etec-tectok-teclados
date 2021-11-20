@@ -58,7 +58,7 @@ $is_logged_in = !empty($_SESSION['user']);
                 <?php }
                 } catch (Exception $e) {
                 } ?>
-                <form class="d-flex" action="search.php">
+                <form class="d-flex" action="search.php" id="searchbar">
                     <input id="search-input" class="form-control me-2" name="q" type="search" placeholder="Faça uma pesquisa..." aria-label="Faça uma pesquisa..." value="<?= $_GET['q']; ?>" required>
                     <button class="material-icons-outlined btn btn-dark" type="submit">
                         search
@@ -78,6 +78,9 @@ $is_logged_in = !empty($_SESSION['user']);
                 <a href="https://github.com/luisfelipesdn12/etec-tectok-teclados" target="_blank" rel="noopener noreferrer" class="btn btn-dark" title="Código Fonte">
                     <img src="https://img.icons8.com/material-outlined/250/69C9D0/github" alt="Github" style="height: 24px;">
                 </a>
+                <button class="material-icons-outlined btn btn-dark" title="<?= "Sacola de compras"; ?>" onclick="location.href='shopping.php'">
+                    shopping_bag
+                </button>
                 <button class="material-icons-outlined btn btn-dark" title="<?= $is_logged_in ? "Sair da conta" : "Entrar na conta"; ?>" onclick="location.href='<?= $is_logged_in ? "logout.php" : "login.php"; ?>'">
                     <?= $is_logged_in ? "logout" : "login"; ?>
                 </button>

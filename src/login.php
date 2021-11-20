@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<?php include __DIR__ . '/database.php'; ?>
-<?php include __DIR__ . '/utils.php'; ?>
+<?php
+
+include __DIR__ . '/database.php';
+include __DIR__ . '/utils.php';
+
+$redirect_to = $_GET['redirect_to'] ?? '/';
+
+?>
 
 <head>
     <?php include 'includes/seo.html' ?>
@@ -78,6 +84,7 @@
             <a href="/" title="Página inicial">
                 <img class="mb-4" src="/assets/tectok-text-white.svg" alt="TecTok Teclados">
             </a>
+            <input type="text" name="redirect_to" value="<?= $redirect_to ?>" hidden>
             <div class="form-floating my-2">
                 <input name="user_email" required type="email" class="form-control" id="user_email" placeholder="nome@tectok.com">
                 <label for="user_email">E-mail</label>

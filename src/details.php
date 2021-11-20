@@ -124,9 +124,15 @@ include __DIR__ . '/utils.php';
                             <p class="text-muted">
                                 <?= $product['quantity_available'] ?> unidades disponíveis
                             </p>
-                            <button class="btn">
-                                Comprar
-                            </button>
+
+                            <form action="shopping.php" method="post">
+                                <input type="text" name="product_id" value="<?= $product['id'] ?>" readonly hidden>
+                                <input type="number" name="quantity_ordered" value=1 min=1 read<input type="text" name="product_id" value="<?= $product['id'] ?>" readonly hidden>
+                                <input name="incremental" value="true" hidden readonly>
+                                <button type="submit" class="btn" <?= $product['quantity_available'] > 0 ? "" : "disabled" ?>>
+                                    <?= $product['quantity_available'] > 0 ? 'Comprar' : 'Indisponível' ?>
+                                </button>
+                            </form>
 
 
                             <?php if (is_admin()) { ?>
