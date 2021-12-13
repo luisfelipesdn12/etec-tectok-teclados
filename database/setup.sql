@@ -30,3 +30,14 @@ create table user (
     cep char(8) not null,
     address_number int not null
 ) default charset utf8;
+
+create table sale (
+    id int primary key auto_increment,
+    ticket char(21) not null,
+    user_id int not null,
+    product_id int not null,
+    quantity_ordered int not null,
+    creation_date datetime default current_timestamp,
+    constraint fk_user_id foreign key (user_id) references user(id),
+    constraint fk_product_id foreign key (product_id) references product(id)
+) default charset utf8;

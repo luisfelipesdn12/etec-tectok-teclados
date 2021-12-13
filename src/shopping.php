@@ -86,7 +86,7 @@ if (isset($_POST['product_id'])) {
         <button class="btn" id="continue-shopping-btn" onclick="location.href='/'">
             Continuar Comprando
         </button>
-        <button class="btn" id="checkout-btn" <?= !empty($products) ?: 'disabled' ?>>
+        <button onclick='location.href="/finish_shopping.php"' class="btn" id="checkout-btn" <?= !empty($products) ?: 'disabled' ?>>
             Finalizar Compra
         </button>
     </section>

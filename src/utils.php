@@ -105,13 +105,12 @@ function render_shopping_cart_product($product)
         </div>
     </div>
     <script>
-        const deleteButton = document.getElementById("delete-product-<?= $product['id'] ?>");
-        if (deleteButton) {
-            deleteButton.onclick = (e) => {
+        document
+            .getElementById("delete-product-<?= $product['id'] ?>")
+            .onclick = (e) => {
                 e.preventDefault();
                 location.href = "remove_from_shopping.php?product_id=<?= $product['id'] ?>";
             };
-        }
     </script>
 <?php }
 

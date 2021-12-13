@@ -104,7 +104,9 @@ $redirect_to = $_GET['redirect_to'] ?? '/';
                 </p>
             <?php } ?>
             <button class="my-3 w-100 btn btn-lg fw-bolder" type="submit">Entrar</button>
-            <a href="/signup.php">Ainda não tenho uma conta</a>
+            <a href="<?= $redirect_to ? '/signup.php?redirect_to=' . $redirect_to : '/signup.php' ?>">
+                Ainda não tenho uma conta
+            </a>
         </form>
     </main>
 </body>

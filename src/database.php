@@ -165,6 +165,18 @@ class DatabaseConnection
         $query->bindParam(":product_id", $product_id);
         $query->execute();
     }
+
+    function create_sale($ticket, $user_id, $product_id, $quantity_ordered)
+    {
+        $query = $this->connection->prepare("insert into sale (ticket, user_id, product_id, quantity_ordered) values (:ticket, :user_id, :product_id, :quantity_ordered)");
+
+        $query->bindParam(":ticket", $ticket);
+        $query->bindParam(":user_id", $user_id);
+        $query->bindParam(":product_id", $product_id);
+        $query->bindParam(":quantity_ordered", $quantity_ordered);
+
+        $query->execute();
+    }
 }
 
 try {
